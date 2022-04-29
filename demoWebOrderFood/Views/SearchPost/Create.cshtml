@@ -1,0 +1,186 @@
+﻿@model Model1.EF.SearchPost
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+
+}
+<style>
+    html {
+        font-size: 62.5%;
+        line-height: 1.6rem;
+    }
+
+    .post__content {
+        margin: 44px 0;
+    }
+
+    .container__post {
+        position: relative;
+        margin: auto;
+        width: 700px;
+        background-color: #fff;
+        border-radius: 15px;
+    }
+
+    .modal-title {
+        font-size: 26px;
+        color: var(--color-primary);
+    }
+
+    .input__content-img {
+        display: flex;
+    }
+
+
+    .btn__chooseImg {
+        margin-left: 3rem;
+    }
+
+
+
+    .inputBox {
+        padding: 10px 0;
+        font-size: 1.6rem;
+    }
+
+        .inputBox .input__content input,
+        .inputBox .input__content textarea {
+            padding: 0 8px;
+            font-size: 1.6rem;
+        }
+
+
+    input[type="submit"] {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: var(--color-primary);
+        color: #fff;
+        border-radius: 5px;
+        width: 100%;
+        font-weight: bold;
+        height: 40px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        input[type="submit"]:hover {
+            opacity: 0.8;
+            transition: opacity ease;
+        }
+
+    .control-label {
+        width: 170px;
+        text-transform: uppercase;
+    }
+
+    .form-select {
+        margin-left: 15px;
+    }
+
+    .tab-content a {
+        font-size: 24px;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .tab-container {
+        margin-top: 40px;
+    }
+
+    .tab-content {
+        padding: 10px 0;
+    }
+
+     .tab-content.active a{
+        color: #82b5a5;
+        font-weight: bold;
+    }
+        .tab-content:nth-child(2) {
+            border-top: 1px solid #fff;
+        }
+</style>
+<div class="row">
+    <div class="col l-2 tab-container">
+        <div class="tab-content active">
+            <a href="/SearchPost/Create" onclick="changeColor(this)">New post for receive</a>
+        </div>
+        <div class="tab-content">
+            <a href="/Trade/Create" onclick="changeColor(this)">New post for give</a>
+        </div>
+    </div>
+    <div class="col l-10">
+        <div class="post__content ">
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="container__post">
+                    <div class="post__content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="postmodallabel">Create new post</h5>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="modal-body">
+                            <form>
+                                <div class="inputBox">
+                                    <div class="input__content">
+                                        @Html.TextBoxFor(model => model.Name, new { placeholder = "Post name", @class = "form-control" })
+                                    </div>
+                                    <div class="input__alert">
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="inputBox">
+                                    <div class="input__content form-text">
+                                        @Html.TextAreaFor(model => model.Detail, new { rows = "5", placeholder = "Content", @class = "form-control" })
+                                    </div>
+                                    <div class="input__alert">
+                                        @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="inputBox">
+                                    <div class="input__content form-text">
+                                        @Html.TextAreaFor(model => model.Keyword, new { placeholder = "Enter the name of the item you want to receive", @class = "form-control" })
+                                    </div>
+                                    <div class="input__alert">
+                                        @Html.ValidationMessageFor(model => model.Keyword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="input-form">
+                                    <input type="submit" name="" value="Post">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    function changeColor(type,element) {
+        let tabs = document.getElementsByClassName('tab-content');
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].style.color = '#82b5a5';
+            tabs[i].style.transform = 'translateX(0)';
+        }
+        element.style.color = '#fff';
+        element.style.transform = 'translateX(5px)';
+        document.getElementById(type).style.display = 'block';
+
+    }
+
+   
+</script>
+

@@ -1,0 +1,219 @@
+﻿@model Model1.EF.Content
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Trade.cshtml";
+}
+@section jsFooter{
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Assets/Admin/js/plugins/ckeditor/config.js',
+        });
+    </script>
+
+}
+
+<style>
+    html {
+        font-size: 62.5%;
+        line-height: 1.6rem;
+    }
+    .post__content {
+        margin: 44px 0;
+    }
+    .container__post {
+        position: relative;
+        width: 700px;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 15px;
+      
+    }
+
+    .modal-title{
+        font-size: 26px;
+        color: var(--color-primary);
+    }
+    .input__content-img {
+        display: flex;
+    }
+    .content__image{
+        flex: 1;
+        padding-right: 4px;
+    }
+    .inputBox{
+        padding: 10px 0;
+    }
+    .modal-body{
+        padding: 10px;
+    }
+    .btn__chooseImg a {
+        font-size: 18px;
+        color: var(--color-primary);
+    }
+    input[type="submit"] {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: var(--color-primary);
+        color: #fff;
+        border-radius: 5px;
+        width: 100%;
+        font-weight: bold;
+        font-size: 20px;
+    }
+        input[type="submit"]:hover {
+            background-color: #9cdec9;
+            transition: .5s ease;
+        }
+</style>
+
+<div class="post__content">
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <div class="container__post ">
+            <div class="post__content  post-mobile">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postmodallabel">Create new post</h5>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="inputBox">
+                            <div class="input__content">
+                                @Html.TextBoxFor(model => model.Name, new { placeholder = "Post name", @class = "form-control" })
+                            </div>
+                            <div class="input__alert">
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                            <div class="inputBox">
+                                <div class="input__content">
+                                    @Html.TextBoxFor(model => model.Description, new { placeholder = "Title", @class = "form-control" })
+                                </div>
+                                <div class="input__alert">
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { placeholder = "Description", @class = "text-danger", style = "color: #82b5a5;  pointer-events: none" })
+                                </div>
+
+                            </div>
+                            <div class="inputBox">
+                                <div class="input__content input__content-img" style="display:flex; justify-content: space-between">
+                                    <div class="content__image"> @Html.TextBoxFor(model => model.Image, new {placeholder = "Image", style= "width: 500px", @class = "form-control", @id = "txtImage" })</div>
+                                    <div class="btn__chooseImg"> <a id="btnSelectImage" href="#" style="padding-right: 33px;">Choose picture</a></div>
+                                </div>
+                                <div class="input__alert">
+                                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            @*<div class="inputBox">
+                                <div class="input__content">
+                                    @Html.DropDownListFor(model => model.CategoryID, null, new { placeholder = "Selected", @class = "form-control" })
+                                </div>
+                                <div class="input__alert">
+                                    @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@
+                            <div class="inputBox">
+                                <div class="input__content form-text">
+                                    @Html.TextAreaFor(model => model.Detail, new { placeholder = "Content", @class = "form-control" })
+                                </div>
+                                <div class="input__alert">
+                                    @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="inputBox">
+                                <div class="input__content">
+                                    @Html.TextBoxFor(model => model.Tags, new { placeholder = "Tags", @class = "form-control" })
+                                </div>
+                                <div class="input__alert">
+                                    @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="input-form">
+                                <input type="submit" name="" value="Post">
+                            </div>
+</form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        @*<div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @id = "txtImage" }, id = "txtImage" })
+                    <a id="btnSelectImage" href="#">Chọn ảnh</a>
+                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.CategoryID, null, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 form-text">
+                    @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Post" class="btn btn-default" />
+                </div>
+            </div>
+        </div>*@
+    }
+
+</div>
+
+

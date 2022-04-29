@@ -1,0 +1,41 @@
+﻿@model PagedList.IPagedList<Model1.EF.SearchPost>
+@using PagedList.Mvc;
+@{
+    Layout = null;
+    var keyword = (List<Model1.ViewModel.ProductViewModel>)ViewBag.model;
+}
+@foreach (var item in Model)
+{
+    <article class="product__item wow fadeInUp" data-wow-delay="0.1s" style="border: 1px solid #fff; border-radius: 5px; padding: 10px; ">
+        <div class="product__header">
+            <h2 class="product__title">
+                <a href="#" rel="bookmark" style="color: #fff">@item.Name</a>
+            </h2>
+            <p class="product__content" style="color: #fff">@item.Detail</p>
+        </div>
+        <div class="product__footer">
+            <div class="product__post">
+                <span class="byline th-block th-uppercase" style="color: #fff">
+                    By
+                    <a href="#" class="url fn n">@item.CreatedBy</a>
+                </span>
+                <span class="posted-on th-block">
+                    <a href="#" rel="bookmark" style="color: #fff">
+                        <time class="entry-date published">
+                            @item.CreatedDay
+                        </time>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <form style="color : #fff" action="/post-recommended" method="get">
+            <button id="txtKeyword" name="keyword" class="search-input" value="@item.Keyword">
+                Recommended()
+            </button>
+        </form>
+                   
+        
+        
+    </article>
+}
+

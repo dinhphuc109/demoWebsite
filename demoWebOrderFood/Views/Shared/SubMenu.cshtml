@@ -1,0 +1,38 @@
+﻿@model List<Model1.EF.Menu>
+  
+        @{
+            var session = (UserLogin)Session[demoWebOrderFood.Common.CommonConstants.USER_SESSION];
+        }
+        @if (session == null)
+        {
+
+            foreach (var item in Model)
+            {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@item.Link" target="@item.Target">@item.Text <span class="sr-only">(current)</span></a>
+                    </li>
+            }
+
+
+        }
+        else
+        {
+
+            foreach (var item in Model)
+            {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@item.Link" target="@item.Target">@item.Text <span class="sr-only">(current)</span></a>
+                    </li>
+            }
+
+
+                <li class="nav-item" style="text-transform: uppercase">
+                    <a href="/Content/Create" class="nav-link">
+                        New Post
+                    </a>
+                 </li>
+
+        }
+
+
+ 

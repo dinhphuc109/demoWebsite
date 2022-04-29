@@ -1,0 +1,409 @@
+:root {
+    --color-primary: #82b5a5;
+    --color-text-main: #9b87a2;
+    --color-text: #d0cfdd;
+    --color-text-primary: #e5b2e2;
+    --color-btn: #555699;
+    --btn-icon: #5c578c;
+    --color-background: #212030;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+.header {
+    background-color: #1d1d1d;
+    height: 112px;
+    width: 100%;
+}
+
+
+
+.header-right {
+    top: 19%;
+}
+#theFirst{
+    display: none;
+}
+#theSecond {
+    display: none;
+}
+
+#theThird {
+    display: none;
+}
+
+#theFourth {
+    display: none;
+}
+
+#website {
+    display: block;
+}
+
+.header__navbar-list--title {
+    font-family: "roboto", cursive;
+    text-align: center;
+    color: #fff;
+}
+/* ------------------------container-information */
+.header__navbar {
+    height: 83vh;
+    margin-top: 30px;
+}
+
+.header__navbar-list {
+    list-style: none;
+}
+
+.header__navbar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: "roboto", cursive;
+    color: #fff;
+}
+
+.header__navbar-item {
+    list-style: none;
+    padding: 10px 20px;
+    position: relative;
+    transform: translateX(0);
+    transition: transform 0.3s;
+    display: flex;
+}
+
+    .header__navbar-item:hover {
+        cursor: pointer;
+        color: var(--color-text-primary);
+        background-color: var(--background-hover);
+        border-right: 4px solid #e5b2e2;
+        transform: translateX(5px);
+    }
+
+    .header__navbar-item:before {
+        content: "";
+        border-bottom: 1px solid var(--color-text-main);
+        position: absolute;
+        left: 22px;
+        right: 90%;
+        top: 43px;
+        transition: 0.3s linear;
+    }
+
+    .header__navbar-item:hover::before {
+        right: 24px;
+    }
+
+.header__navbar-active {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.header__navbar-text {
+    padding-left: 4px;
+}
+
+.header__navbar-icon {
+    margin-top: -17px;
+}
+
+.container-information {
+    width: 100%;
+    margin: 30px 0;
+}
+
+.container__wrap {
+    display: flex;
+    padding-top: 11px;
+    margin-right: 30px;
+}
+
+.container__heading {
+    display: flex;
+    position: relative;
+    width: 500px;
+    background-color: var(--color-background);
+    padding: 10px;
+    border-radius: 50px;
+}
+
+/* --------------------------infomation */
+.container-content-infomation {
+    margin-top: 30px;
+}
+
+.content__information-body {
+    display: flex;
+    padding-left: 20px;
+    margin: 11px 8px;
+    color: #fff;
+}
+
+.content__infomation-icon {
+    font-size: 2rem;
+    color: var(--btn-icon);
+}
+
+.content__infomation-title {
+    display: flex;
+}
+
+    .content__infomation-title p {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding-left: 20px;
+    }
+
+    .content__infomation-title i {
+        font-size: 1.4rem;
+        line-height: 28px;
+        padding-left: 20px;
+    }
+
+.content__infomation-wrapper {
+    display: flex;
+    background-color: var(--color-background);
+    width: 450px;
+    padding: 20px 10px 20px 20px;
+    border-radius: 30px;
+}
+
+    .content__infomation-wrapper:nth-child(2) {
+        margin-left: 20px;
+        width: 350px;
+    }
+
+    .content__infomation-wrapper:nth-child(3) {
+        margin-left: 20px;
+        width: 220px;
+    }
+
+.content__infomation-img {
+    width: 130px;
+    height: 150px;
+    border-radius: 20px;
+}
+
+.content__infomation-vitae {
+    display: flex;
+    padding: 8px 0 0 20px;
+}
+
+.content__info-title {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+.content__infomation-answer {
+    padding-left: 20px;
+}
+
+.content__info-text {
+    font-size: 1.4rem;
+    color: var(--color-text);
+}
+
+.content__infomation-active {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.content-info-item {
+    padding: 6px;
+    font-size: 14px;
+}
+
+/* ------------------SKill */
+
+.content__information-title {
+    display: flex;
+    padding-left: 20px;
+}
+
+.content__information-icon {
+    font-size: 2rem;
+    color: var(--btn-icon);
+}
+
+.content__information-text {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.content__information-wrap {
+    width: 400px;
+    height: 200px;
+    background-color: var(--color-background);
+    border-radius: 50px;
+}
+
+    .content__information-wrap:nth-child(2) {
+        margin-left: 20px;
+    }
+
+.content__information-wrapper {
+    padding: 14px 50px;
+}
+
+.content__information-skill {
+    padding: 4px 0;
+}
+
+.skill__mine {
+    display: flex;
+}
+
+.skill__loading-text {
+    text-align: right;
+}
+
+.skill__mine-text {
+    font-size: 1.2rem;
+    color: var(--color-text);
+    margin: 5px 0;
+}
+
+.skill__mine-content {
+    flex: 1;
+}
+
+.skill__loading {
+    --width: 100%;
+    width: var(--width);
+    height: 5px;
+    background-color: var(--color-primary);
+    display: block;
+}
+
+.skill__loading-loaded {
+    width: calc(var(--width) / 2);
+    background-color: var(--color-text-primary);
+}
+
+.skill__be-loaded {
+    width: 0;
+}
+
+.skill__mobile-loaded {
+    width: calc(var(--width) - 80%);
+}
+
+.skill__games-loaded {
+    width: calc(var(--width) - 20%);
+}
+
+.skill__speak-loaded {
+    width: calc(var(--width) - 60%);
+}
+
+.skill__conmmunication-loaded {
+    width: calc(var(--width) - 70%);
+}
+
+.content__information-logo {
+    width: 22%;
+    margin: 0 20px;
+}
+
+.content__information-img {
+    width: 225px;
+    height: 200px;
+}
+
+.edgtf-lighter-effect-top-header {
+    position: absolute;
+    top: 85px;
+}
+
+.content__information--logo {
+    display: flex;
+    justify-content: center;
+}
+
+    .content__information--logo img {
+        height: 109px;
+    }
+
+.logo-imgOne {
+    width: 250px;
+}
+
+.logo-imgTwo {
+    width: 100px;
+}
+/*skill-second*/
+.skill-second-one {
+    width: calc(var(--width) - 60%);
+}
+.skill-second-two {
+    width: calc(var(--width) - 30%);
+}
+.skill-second-three {
+    width: calc(var(--width) - 80%);
+}
+.skill-second-four {
+    width: calc(var(--width) - 20%);
+}
+.skill-second-five {
+    width: calc(var(--width) - 60%);
+}
+.skill-second-six {
+    width: calc(var(--width) - 60%);
+}
+
+/*skill-third*/
+.skill-third-one {
+    width: calc(var(--width) - 50%);
+}
+.skill-third-two {
+    width: calc(var(--width) - 80%);
+}
+
+.skill-third-three {
+    width: calc(var(--width) - 90%);
+}
+
+.skill-third-four {
+    width: calc(var(--width) - 20%);
+}
+
+.skill-third-five {
+    width: calc(var(--width) - 30%);
+}
+
+.skill-third-six {
+    width: var(--width);
+}
+
+/*skill-fouth*/
+.skill-fo-one {
+    width: calc(var(--width) - 60%);
+}
+
+.skill-fo-two {
+    width: calc(var(--width) - 70%);
+}
+
+.skill-fo-three {
+    width: calc(var(--width) - 90%);
+}
+
+.skill-fo-four {
+    width: calc(var(--width) - 10%);
+}
+
+.skill-fo-five {
+    width: calc(var(--width) - 60%);
+}
+
+.skill-fo-six {
+    width: calc(var(--width) - 60%);
+}

@@ -1,0 +1,208 @@
+﻿@model Model1.EF.Product
+    @{
+        ViewBag.Title = "Detail";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        var category = (Model1.EF.ProductCategory)ViewBag.Category;
+        var relatedProducts = (List<Model1.EF.Product>)ViewBag.relatedProducts;
+        var sessioncart = (List<demoWebOrderFood.Models.CartItem>)ViewBag.sessioncart;
+        var modell = (Model1.EF.Order)ViewBag.setId;
+    }
+
+<style>
+    .product-info__item{
+        padding-left: 12px;
+    }
+    .product-detail-title{
+        font-size: 16px;
+    }
+</style>
+
+    <div class="app__container app-content">
+        <div class="home-product-content">
+            <ul class="home-product__list">
+                <li class="home-product__item">
+                    <a href="/" class="home-product__link">Home</a>
+                </li>
+                <li class="home-product__item">
+                    <i class="home-product-icon fas fa-angle-right"></i>
+                    <a href="/san-pham/@category.MetaTitle-@category.ID" class="home-product__link">@category.Name</a>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="grid wide">
+            <div class="row sm-gutter product__content">
+                <div class="col l-5">
+                    <div class="product-info__item">
+                        <div class="product-info__item-img--big">
+                            <img src="@Model.Image" alt="@Model.Name" id="img-main">
+                        </div>
+                        <div class="product-info__item-img--small">
+                            <div class="product-info__item-show">
+                                <img src="./images/1.1.jpg" alt="" class="img-child">
+                            </div>
+                            <div class="product-info__item-show">
+                                <img src="./images/1.2.jpg" alt="" class="img-child">
+                            </div>
+                            <div class="product-info__item-show">
+                                <img src="./images/1.3.jpg" alt="" class="img-child">
+                            </div>
+                            <div class="product-info__item-show">
+                                <img src="./images/1.4.jpg" alt="" class="img-child">
+                            </div>
+                            <div class="product-info__item-show">
+                                <img src="./images/1.5.jpg" alt="" class="img-child">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-interact">
+                        <div class="product-interact__share">
+                            <p class="product-interact__text">Share:</p>
+                            <a href="#" class="product-interact__icon-link">
+                                <i class="product-interact__icon fab fa-facebook-messenger"></i>
+                            </a>
+                            <a href="#" class="product-interact__icon-link">
+                                <i class="product-interact__icon fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="product-interact__icon-link">
+                                <i class="product-interact__icon fab fa-google-plus"></i>
+                            </a>
+                            <a href="#" class="product-interact__icon-link">
+                                <i class="product-interact__icon fab fa-pinterest"></i>
+                            </a>
+                            <a href="#" class="product-interact__icon-link">
+                                <i class="product-interact__icon fab fa-twitter"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col l-7">
+                    <div class="product-info__item product__content">
+                        <div class="product-info__item-name">
+                            <p class="product__item-text">@Model.Name</p>
+                        </div>
+                    </div>
+                    <div class="product-detail-wrapper">
+                        <div class="product-detail-title">
+                            <h1>PRODUCT DESCRIPTION</h1>
+
+                        </div>
+
+
+                        <div class="product-detail-item-wrap product-detail-material">
+                            <div class="product-detail-item product-detail-material-heading">
+                                @Model.Description
+                            </div>
+                            <div class="product-detail-item-content product-detail-material-name">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="product-detail-wrapper">
+                        <div class="product-detail-title">
+                            <h1>PRODUCT DETAILS</h1>
+                        </div>
+                        <div class="product-detail-content">
+                            <p>
+                                @Html.Raw(Model.Detail)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="product__cart-buy-item ">
+
+                        @{
+                            var session = (UserLogin)Session[demoWebOrderFood.Common.CommonConstants.USER_SESSION];
+                        }
+                        @if (session == null)
+                        {
+
+                            <a href="/dang-nhap">Sign up to receive</a>
+                        }
+                        else
+                        {
+                            if (session.UserName == Model.CreateBy)
+                            {
+                                <a>
+                                    My item
+                                </a>
+                            }
+                            else if (sessioncart.Count < 1)
+                            {
+                                <a href="/dang-ki-nhan?productId=@Model.ID&quantity=1">
+                                    Sign up to receive
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/Cart/Index">
+                                    Already have
+                                </a>
+                            }
+                        }
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="grid wide product__container">
+            <div class="row sm-gutter product-detail">
+                <div class="col l-9 product-detail-wrap">
+                   
+                    <div class="product-review">
+                        <hr />
+                        <div class="tab-pane" id="product-binhluan">
+                            <div class="fb-like" data-width="800" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                            <div class="fb-comments" data-width="800" data-href="@Request.Url.AbsoluteUri" data-numposts="5"></div>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+                <div class="col l-3 app__product">
+                    <!-- product hot sales -->
+                    <div class="product-hot-sales">
+                        <div class="product-hot-sales-wrapper">
+                            <div class="product-hot-sales-item">
+                                <h3 style="text-align: center">Related Products</h3>
+                                @foreach (var item in relatedProducts)
+                                {
+                                    var url = "/chi-tiet/" + item.MetaTile + "-" + item.ID;
+
+                                    <a href="@url" class="product-hot-sales-wrapper">
+                                        <div class="product-hot-sales-item">
+                                            <div class="product-hot-sales-img" style="background-image: url(@item.Image); padding-top: 100%;background-size: cover">
+                                            </div>
+                                            <div class="product-hot-sales-name"> @item.Name</div>
+                                            <div class="product-hot-sales-price"> @item.CreateBy</div>
+                                        </div>
+                                    </a>
+
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+    <script type="text/javascript">
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>

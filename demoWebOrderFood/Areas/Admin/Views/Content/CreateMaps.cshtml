@@ -1,0 +1,188 @@
+﻿@model Model1.EF.Content
+
+@{
+    ViewBag.Title = "CreateMaps";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Create new Maps Address
+}
+
+@section jsFooter{
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Assets/Admin/js/plugins/ckeditor/config.js',
+        });
+    </script>
+    <style>
+        .location{
+            pointer-events: none;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    </style>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col">
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @id = "txtImage" })
+                        <a id="btnSelectImage" href="#">Chọn ảnh</a>
+                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MetaKeywords, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.MetaKeywords, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MetaKeywords, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Lat, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Lat, new { placeholder = "click maps to get location", id = "lat1", @class = "form-control location", onkeypress = "return isNumberKey(event)" })
+                        @Html.ValidationMessageFor(model => model.Lat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Lng, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Lng, new { placeholder = "click maps to get location", id = "lng1", @class = "form-control location", onkeypress = "return isNumberKey(event)" })
+                        @Html.ValidationMessageFor(model => model.Lng, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 form-button">
+                        <input type="submit" value="Create" class="btn btn-primary btn-user btn-block" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div id="map" style="width: 500px; height: 365px; top: 30px"></div>
+        </div>
+
+    </div>
+
+
+}
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNI_ZWPqvdS6r6gPVO50I4TlYkfkZdXh8&callback=initMap&libraries=&v=weekly"
+        async></script>
+<script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+</script>
+<script type="text/javascript">
+    /**/
+
+
+
+    //var x = document.getElementById("demo");
+
+    //function getLocation() {
+    //    if (navigator.geolocation) {
+    //        navigator.geolocation.getCurrentPosition(showPosition);
+    //    } else {
+    //        x.innerHTML = "Geolocation không được hỗ trợ bởi trình duyệt này.";
+    //    }
+    //}
+
+    //function showPosition(position) {
+    //    x.innerHTML = "Vĩ độ: " + position.coords.latitude +
+    //        "<br>Kinh độ: " + position.coords.longitude;
+    //}
+
+    function initMap() {
+        // Create the map.
+
+        /**/
+        const myLatlng = { lat: 16.045285042330054, lng: 108.20406655817592 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: myLatlng,
+            zoom: 14,
+        });
+
+
+
+        // Create the initial InfoWindow.
+        let infoWindow = new google.maps.InfoWindow({
+            content: "Click the map to get Lat/Lng!",
+            position: myLatlng,
+        });
+        infoWindow.open(map);
+        // Configure the click listener.
+        map.addListener("click", (mapsMouseEvent) => {
+
+
+            // Close the current InfoWindow.
+            infoWindow.close();
+            $("#lat1").val(mapsMouseEvent.latLng.lat());
+            $("#lng1").val(mapsMouseEvent.latLng.lng());
+            $("#lat1").select();
+            $("#lng1").select();
+            // Create a new InfoWindow.
+            infoWindow = new google.maps.InfoWindow({
+                position: mapsMouseEvent.latLng,
+            });
+            infoWindow.setContent(
+                JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+            );
+            infoWindow.open(map);
+        });
+
+
+
+    }
+
+</script>
+
+<div class="form-back">
+    <i class="fas fa-arrow-circle-left"> @Html.ActionLink("Back to List", "Index")</i>
+</div>

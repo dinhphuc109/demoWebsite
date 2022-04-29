@@ -1,0 +1,122 @@
+.header {
+    background-color: #1d1d1d;
+    height: 112px;
+    width: 100%;
+}
+
+.header-left {
+    top: 13%;
+}
+
+.header-right {
+    top: 19%;
+}
+
+.item-content-bottom {
+    padding: 10px 70px;
+}
+
+.justify-content-top {
+    display: flex;
+    align-items: center;
+}
+
+.give__content {
+    margin-top: 20px;
+}
+
+.content {
+    position: relative;
+}
+
+.content-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+    .content-title h1 {
+        font-weight: bold;
+        font-size: 50px;
+    }
+
+.product__item-link img {
+    height: 250px;
+}
+
+.header__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
+
+
+.header__overlay-open {
+    display: block;
+}
+
+.header__navbar-form {
+    position: fixed;
+    top: 120px;
+    left: 420px;
+    background-color: #fff;
+    width: 500px;
+    height: 400px;
+    border-radius: 15px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.header__navbar-post {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.header__navbar-post--open {
+    opacity: 1;
+    visibility: visible;
+    transition: all 1s;
+    overflow-y: hidden;
+}
+
+.modal-footer button {
+    width: 100%;
+    background-color: #82b5a5;
+    margin-top: 120px;
+}
+
+.btn__disable {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+    background-color: transparent !important;
+    border: 1px solid #82b5a5;
+}
+
+.product__title {
+    font-size: 20px;
+    padding: 0 5px;
+}
+
+.product__item {
+    margin: 10px 0;
+}
+
+    .product__item:hover {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.7);
+        transform: translateY(-10px);
+        transition: transform 1s;
+    }
+
+.fashion-search-filter-status_text {
+    font-size: 26px;
+    font-weight: bold;
+}

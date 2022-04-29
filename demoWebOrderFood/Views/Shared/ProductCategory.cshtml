@@ -1,0 +1,38 @@
+﻿@model List<Model1.EF.ProductCategory>
+    
+    <style>
+        .fashion-filter-group_header {
+            font-size: 20px;
+            padding-bottom: 20px;
+        }
+        .fashion-checkbox_box {
+            font-size: 14px;
+        }
+        .fashion-checkbox_control a{
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+
+   
+    <div class="fashion-filter-group_header" style="color: #fff">Danh mục</div>
+    <div class="folding-items fashion-filter-group_body folding-items-folded">
+    @foreach (var item in Model)
+    {
+        <div class="fashion-filter fashion-checkbox-filter">
+            <div class="fashion-checkbox">
+                <label class="fashion-checkbox_control">
+                    <a href="/san-pham/@item.MetaTitle-@item.ID" class="fashion-checkbox_box"  style="color: #fff">
+                        <span class="fashion-checkbox_label">
+                            @item.Name
+                        </span>
+                    </a>
+                </label>
+            </div>
+        </div>
+    }
+    </div>
+
+
+
+

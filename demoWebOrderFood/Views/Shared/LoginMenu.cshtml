@@ -1,0 +1,88 @@
+﻿@model List<Model1.EF.Menu>
+
+<style>
+    .nav-link__content{
+        display: flex;
+    }
+    .nav-link__login a {
+        color: #000;
+        font-size: 20px;
+        font-family: roboto,cursive;
+        clear: both;
+    }
+    .nav-item ul {
+        border-radius: 10px;
+    }
+    .nav-item{
+        list-style: none;
+    }
+    .nav-link__item a {
+        text-decoration: none;
+    }
+
+    .nav-item .nav-link__list .nav-link__item {
+        list-style: none;
+        display: none;
+        background-color: #fafafa;
+        padding: 5px;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .nav-link__login:hover .nav-link__list > .nav-link__item {
+        display: block;
+    }
+
+    .nav-link__list > .nav-link__item:hover {
+        background-color: #82b5a5;
+        transition: .5s ease;
+    }
+</style>
+   
+   
+        @{
+            var session = (UserLogin)Session[demoWebOrderFood.Common.CommonConstants.USER_SESSION];
+        }
+        @if (session == null)
+        {
+          
+                foreach (var item in Model)
+                {
+                    <li class="nav-item" style="text-transform:uppercase">
+                        <a class="nav-link" href="@item.Link" target="@item.Target">@item.Text <span class="sr-only">(current)</span></a>
+                    </li>
+                }
+          
+        }
+        else
+        {
+<ul >
+    <li class="nav-item nav-link__login">
+        <a href="/user-profile" class="nav-link">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            @session.UserName
+        </a>
+        <ul class="nav-link__list mobile-hide">
+            <li class="nav-link__item">
+                <a href="/user-profile">Profile</a>
+            </li>
+            <li class="nav-link__item">@Html.ActionLink("Logout", "Logout", "User")</li>
+
+        </ul>
+
+    </li>
+</ul>
+
+            @*<ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="" target="">@session.UserName<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="" target="">@Html.ActionLink("Logout", "Logout", "User")<span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>*@
+
+        }
+
+  

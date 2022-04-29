@@ -1,0 +1,82 @@
+﻿@model PagedList.IPagedList<Model1.EF.Category>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản lý loại Tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    List of news categories
+}
+
+
+
+<div class="row">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Category", FormMethod.Get))
+                {
+                    <div class="row form-group">
+                            <div class="col-md-4">
+                                <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" />
+                            </div>
+                            <div class="col-md-4 ml-5">
+                                <button class="btn btn-success" type="submit">Search</button>
+                                <a type="button" class="btn btn-primary" href="/Admin/Category/Create">Add new</a>
+                            </div>
+                    </div>
+                }
+
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>Tên Loại tin tức</th>
+                                <th>Tiêu đề</th>
+                                <th>Chi tiết</th>
+                                <th>Thêm</th>
+
+                                <th>#</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.ID">
+
+                                    <td>@item.Name</td>
+                                    <td>@item.MetaTitle</td>
+                                    <td>@item.DisplayOrder</td>
+
+                                    <td>@item.SeoTitle</td>
+
+                                    <td>
+                                        <a href="/Admin/Category/Edit/@item.ID">Sửa</a>
+                                        <br />
+                                        @Ajax.ActionLink("Xóa", "Delete", new { @id = item.ID }, new AjaxOptions
+                                   {
+                                       Confirm = "Bạn có muốn xóa bản ghi này?",
+                                       OnComplete = "$(#'row_" + @item.ID + "').Remove()",
+                                       HttpMethod = "Delete"
+
+                                   })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->

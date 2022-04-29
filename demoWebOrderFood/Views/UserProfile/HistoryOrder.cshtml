@@ -1,0 +1,156 @@
+﻿@model PagedList.IPagedList<Model1.EF.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "HOrder";
+    Layout = "~/Views/Shared/Trade.cshtml";
+    var ListNewProduct = (List<Model1.EF.Product>)ViewBag.NewProducts;
+    var category = (Model1.EF.ProductCategory)ViewBag.Category;
+}
+
+    <style>
+        .posted__user {
+            margin-top: 3rem !important;
+            margin-bottom: 5rem !important;
+        }
+        .editUser {
+            position: absolute;
+            top: 188px;
+            left: 51%;
+        }
+
+        .editUser .hvt {
+            padding: 17px 0;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            display: none;
+        }
+
+        .modal__overFlow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: hidden;
+            padding-right: 15px;
+        }
+
+        .hvt input {
+            width: 600px;
+        }
+
+        .btn__disable {
+            display: none;
+        }
+
+        .btn__formUpdate {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 5px;
+        }
+
+        .button {
+            padding: 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+            .product__title a {
+                text-decoration: none;
+                color: #000;
+                font-size: 18px;
+            }
+        </style>
+    <div class="grid wide sm-gutter posted__user">
+        <input class="btn__primary button btn__cancel" type="button" onclick="window.location.replace('/user-profile')" value="Back Profile" />
+        @if (Model.Count() > 0)
+        {
+            <div class="row">
+                <div class="col l-10">
+                    <div class="product">
+                        <div class="row">
+
+                            @foreach (var item in Model)
+                            {
+                                var url = "/chi-tiet/" + item.MetaTile + "-" + item.ID;
+                                <div class="col l-2-4 c-6 mt-5">
+                                    <article class="product__item wow fadeInUp" data-wow-delay="0.1s">
+
+
+                                        <a href="@url" class="product-hot-sales-wrapper">
+                                            <div class="product-hot-sales-item">
+                                                <div class="product-hot-sales-img" style="background-image: url(@item.Image); padding-top: 100%;background-size: cover">
+                                                </div>
+                                                <div class="product-hot-sales-name"> @item.Name</div>
+                                                <div class="product-hot-sales-price">
+                                                    @item.CreateBy
+                                                    <span class="posted-on th-block">
+                                                        <a href="" rel="bookmark">
+                                                            <time class="entry-date published">
+                                                                @Html.FormatValue(item.CreateDate, "{0:dd/MM/yyyy}")
+                                                            </time>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+
+
+
+                                        @*<a href="@url" class="product__item-link" style="background-image: url(@item.Image); padding-top: 100%; background-size: cover; background-repeat: non-repeat">
+
+                                        </a>
+                                        <header class="product__header">
+                                            <h2 class="product__title">
+                                                <a href="@url" rel="bookmark">@item.Name</a>
+                                            </h2>
+                                        </header>
+                                        <footer class="product-footer">
+                                            <div class="product__post">
+                                                <span class="byline th-block th-uppercase">
+                                                    By
+                                                    <a href="" class="url fn n">@item.CreateBy</a>
+                                                </span>
+                                                <span class="posted-on th-block">
+                                                    <a href="" rel="bookmark">
+                                                        <time class="entry-date published">
+                                                            @Html.FormatValue(item.CreateDate, "{0:dd/MM/yyyy}")
+                                                        </time>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </footer>*@
+                                    </article>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="pagination-list">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+
+            </div>
+        }
+        else
+        {
+            <div class="noProduct" style="position: relative; top: 50%; left: 37%">
+                <img src="~/Assets/client/images/no-cart-edit.png" style="width: 320px; height: 200px " />
+                <h1 style=" font-size: 22px; color: #fff; text-align: center; margin: 20px 0; width: 300px">No products</h1>
+            </div>
+        }
+    </div>
+<br />
+
+
+
+
+

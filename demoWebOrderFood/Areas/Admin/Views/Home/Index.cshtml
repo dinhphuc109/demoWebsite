@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<Model1.EF.Content>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    Home Admin
+}
+
+
+
+
+
+
+<div id="map" style="height: 66vh; top: 135px;width: 1000px"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNI_ZWPqvdS6r6gPVO50I4TlYkfkZdXh8&callback=initMap&libraries=&v=weekly"
+        async></script>
+<script type="text/javascript">
+        var markers = @Html.Raw(@ViewBag.Markers);
+        window.onload = function () {
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                zoom: 11,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            for (i = 0; i < markers.length; i++) {
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 8,
+                        fillColor: "#F00",
+                        fillOpacity: 1,
+                        strokeWeight: 0.4
+                    },
+                    map: map,
+                    title: data.title,
+
+                });
+
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent('<span class="titleMap">' + data.title + '</span>' + '<br><img src="' + data.description + '" style="background-size: contain">');
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+            }
+        }
+</script>

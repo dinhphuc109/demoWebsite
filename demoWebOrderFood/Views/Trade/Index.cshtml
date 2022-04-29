@@ -1,0 +1,154 @@
+﻿@model PagedList.IPagedList<Model1.EF.Product>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ListNewProduct = (List<Model1.EF.Product>)ViewBag.NewProducts;
+    var category = (Model1.EF.ProductCategory)ViewBag.Category;
+}
+
+<style>
+    .content {
+        margin-bottom: 50px;
+    }
+
+    .product__title a {
+        text-decoration: none;
+        color: #000;
+        font-size: 18px;
+    }
+
+    .pagination > li {
+        padding: 0 4px;
+        font-size: 16px;
+    }
+
+    .pagination .active:hover {
+        cursor: default;
+    }
+
+    .pagination-list {
+        justify-content: center;
+        display: flex;
+        margin-top: 20px;
+    }
+
+    .btn__receive, .btn__receive a {
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+    }
+</style>
+<h1 style="color: #fff; text-transform: uppercase; font-size: 28px; font-weight: bold; margin: 20px 0 60px 0;">Post for give</h1>
+<div class="row">
+    <div class="col l-2 m-0 c-0 moblie__hide">
+        @{ Html.RenderAction("ProductCategory", "Trade");}
+    </div>
+
+    <div class="col l-10 m-12 c-12">
+        <div class="row">
+            <a href="/Cart/Success" class="col l-2 mr-2 btn__receive" style="text-decoration: none; color: #fff">View Receive</a>
+            <a href="/Give/Index" class="col l-2 btn__receive"  style="text-decoration: none; color: #fff">View Give</a>
+        </div>
+
+        <div class="product">
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+                    var url = "/chi-tiet/" + item.MetaTile + "-" + item.ID;
+                    <div class="col l-2-4 c-6">
+                        <article class="product__item wow fadeInUp p-2" data-wow-delay="0.1s">
+                            <a href="@url" class="product__item-link">
+                                <img src="@item.Image" alt="@item.Name" width="980" height="460" class="has-animation featured-image th-w-full th-h-full wp-post-image">
+                            </a>
+                            <div class="product__header">
+                                <h2 class="product__title">
+                                    <a href="@url" rel="bookmark" style="color: #fff">@item.Name</a>
+                                </h2>
+                            </div>
+                            <div class="product-footer">
+                                <div class="product__post">
+                                    <span class="byline th-block th-uppercase">
+                                        By
+                                        <a href="" class="url fn n">@item.CreateBy</a>
+                                    </span>
+                                    <span class="posted-on th-block">
+                                        <a href="" rel="bookmark">
+                                            <time class="entry-date published">
+                                                @Html.FormatValue(item.CreateDate, "{0:dd/MM/yyyy hh:mm}")
+                                            </time>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="pagination-list">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<h1 style="color: #fff; text-transform: uppercase; font-size: 28px; font-weight: bold; margin: 20px 0 60px 0;">Post for receive</h1>
+@{ Html.RenderAction("SearchPost", "SearchPost");}
+
+
+@*<div class="container">
+        <h1 style="color: #fff; text-transform: uppercase; font-size: 28px; font-weight: bold;">Post for receive</h1>
+        <div class="give__content">
+            <main class="grid wide  sm-gutter">
+                <div class="col l-12">
+
+                    <div class="row">
+                        <div class="col l-12 m-12 c-12">
+                            <div class="row">
+                                <div class="col l-2 mr-2 btn__receive btn__disable">New Product</div>
+                                <div class="col l-2 btn__receive">View</div>
+                            </div>
+                            <div class="product">
+                                <div class="row sm-gutter">
+                                    <div class="col l-2-4 c-6">
+                                        <article class="product__item wow fadeInUp" data-wow-delay="0.1s">
+                                            <div class="product__header">
+                                                <h2 class="product__title">
+                                                    <a href="#" rel="bookmark" style="color: #fff; font-size: 20px">Tiêu đề</a>
+                                                </h2>
+                                                <p class="product__content" style="color: #fff; font-size: 16px">Nội dung</p>
+                                            </div>
+                                            <div class="product__receive">
+                                                <div class="product__post">
+                                                    <span class="byline th-block th-uppercase">
+                                                        By
+                                                        <a href="#" class="url fn n">Taras Dashkevych</a>
+                                                    </span>
+                                                    <span class="posted-on th-block">
+                                                        <a href="#" rel="bookmark">
+                                                            <time class="entry-date published">
+                                                                April 17, 2019
+                                                            </time>
+                                                        </a>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>*@

@@ -1,0 +1,58 @@
+﻿@model Model1.EF.Contact
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+    .news__content {
+        margin: 5rem 0;
+       
+    }
+   
+</style>
+
+@section jsFooter{
+    <script src="/Assets/client/js/contactController.js"></script>
+    }
+    <div class="news__content">
+        <div class="container__contact-title">
+            @Html.Raw(Model.Content)
+           
+        </div>
+        <div class="container__contact-getInTouch">
+            <div class="container__contact-getInTouch-title">
+                <h1>Get in touch with us</h1>
+            </div>
+            <div class="container__contact-getInTouch--content">
+                <form>
+                    <div class="inputBox">
+                        <input type="text" id="txtName" name="" required="">
+                        <label>Name</label>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="txtPhone" name="" required="">
+                        <label>Phone</label>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="txtEmail" name="" required="">
+                        <label>Email</label>
+                    </div>
+
+                    <div class="inputBox">
+                        <input type="text" id="txtAddress" name="" required="">
+                        <label>Address</label>
+                    </div>
+                    <div class="inputBox">
+                        <textarea id="txtmessage" cols="70" rows="10"placeholder="Message" ></textarea>
+                        
+                    </div>
+                    <input type="submit" id="btnSend" name="" value="Send message">
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    

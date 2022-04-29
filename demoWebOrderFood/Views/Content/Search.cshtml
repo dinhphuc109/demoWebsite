@@ -1,0 +1,108 @@
+﻿@model List<Model1.ViewModel.ContentViewModel>
+@{
+
+    ViewBag.Title = "Kết quả tìm kiếm";
+    Layout = "~/Views/Shared/Trade.cshtml";
+}
+
+<style>
+    .container__search{
+        margin: 0 0 4rem 0;
+    }
+    .search__result {
+        margin: 4rem 0 2rem 4rem ;
+    }
+</style>
+<h3 class="search__result">Search results by keyword: @ViewBag.keyword</h3>
+<div class="container__news container__search">
+    
+    <div class="container__news-wrapper">
+        @if (Model.Count > 0)
+        {
+            if (Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+
+                    var url = "/tin-tuc/" + item.MetaTitle + "-" + item.ID;
+                    <div class="box" style="background-image: url('@item.Images'); background-repeat: no-repeat;  background-size: cover;">
+                        <div class="content">
+
+                            <h3 @*href="news-search"*@>@item.Name</h3>
+                            <p>
+                                @item.CateName <br />
+                            </p>
+                            <p>
+                                @item.CreateBy<br />
+                            </p>
+
+                            <p>@Html.FormatValue(item.CreatedDate, "{0:dd/MM/yyyy}")</p>
+
+                            <a href="/tin-tuc/@item.MetaTitle-@item.ID">Read more</a>
+
+                        </div>
+                        <div class="box__overlay"></div>
+                    </div>
+                }
+
+
+
+
+                <!--phân trang sản phẩm theo thể loại-->
+                if (ViewBag.TotalPage > 1)
+                {
+                    var pageDisplay = (int)ViewBag.MaxPage;
+                    int totalPage = (int)ViewBag.TotalPage;
+                    int currentPage = ((int)ViewBag.pageIndex);
+
+                    var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+                    var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+                    var link = "/tim-kiem?keyword=" + ViewBag.keyword;
+                    <nav>
+                        <ul class="pagination">
+                            @if (currentPage > ViewBag.First)
+                            {
+                                <li><a href="@link&page=@ViewBag.First" title="Trang đầu" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                                <li>
+                                    <a href="@link&page=@ViewBag.Prev" title="Trang trước" class="prev"><i class="fa fa-angle-left"></i></a>
+                                </li>
+
+                            }
+                            @for (int i = startPageIndex; i <= endPageIndex; i++)
+                            {
+                                if (currentPage == i)
+                                {
+
+                                    <li> <a href="@link&page=@i" class="active" title="Trang @i">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@link&page=@i" title="Trang @i" class="pos">@i</a></li>
+                                }
+                            }
+                            @if (currentPage < totalPage)
+                            {
+                                <li><a href="@link&page=@ViewBag.Next" class="next" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
+                                <li> <a href="@link&page=@ViewBag.Last" class="last" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
+                            }
+
+                        </ul>
+                    </nav>
+                }
+
+
+            }
+        }
+        else
+        {
+            <div class="noProduct" style="position: relative; top: 5%;left: 175%;">
+                <img src="~/Assets/client/images/no-cart-edit.png" style="width: 320px; height: 200px " />
+                <h1 style=" font-size: 22px; color: #fff; text-align: center; margin: 20px 0;">No News</h1>
+            </div>
+        }
+
+
+    </div>
+</div>
+

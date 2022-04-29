@@ -1,0 +1,132 @@
+body {
+    background-image: url('/Assets/client/images/stars.png');
+    background-color: #000;
+}
+.container {
+    margin-top: 80px;
+    margin-bottom: 100px;
+}
+
+.container__title {
+    text-align: center;
+    width: 100%;
+    padding: 0 0 90px 0;
+    font-family: Merriweather, serif;
+    font-size: 36px;
+    font-style: italic;
+    line-height: 27px;
+    letter-spacing: 0;
+    color: #82b5a5;
+    margin: 0;
+    font-weight: 500;
+}
+
+.container__contact-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact__icon-item {
+    width: 250px;
+}
+
+    .contact__icon-item p,
+    .contact__icon-item h5 {
+        text-align: center;
+    }
+
+    .contact__icon-item h5 {
+        color: var(--color-primary);
+    }
+
+    .contact__icon-item p {
+        color: #fff;
+    }
+
+.icon-item {
+    position: relative;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid transparent;
+    padding: 20px;
+    background-color: var(--color-primary);
+}
+
+.container__contact-getInTouch {
+    margin-top: 40px;
+}
+
+.container__contact-getInTouch-title {
+    text-align: center;
+    color: var(--color-primary);
+}
+
+    .container__contact-getInTouch-title h1 {
+        font-size: 24px;
+    }
+
+.container__contact-getInTouch--content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .container__contact-getInTouch--content .inputBox {
+        position: relative;
+    }
+
+        .container__contact-getInTouch--content .inputBox input,
+        .container__contact-getInTouch--content .inputBox textarea {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+        }
+
+        .container__contact-getInTouch--content .inputBox label {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            letter-spacing: 2px;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .container__contact-getInTouch--content .inputBox input:focus ~ label,
+        .container__contact-getInTouch--content .inputBox input:valid ~ label,
+        .container__contact-getInTouch--content .inputBox textarea:focus ~ label {
+            top: -18px;
+            left: 0;
+            color: #82b5a5;
+            font-size: 12px;
+        }
+
+    .container__contact-getInTouch--content input[type="submit"] {
+        border: none;
+        outline: none;
+        color: #fff;
+        background: #82b5a5;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 10px;
+        width: 100%;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+        .container__contact-getInTouch--content input[type="submit"]:hover {
+            background: #96caba;
+        }

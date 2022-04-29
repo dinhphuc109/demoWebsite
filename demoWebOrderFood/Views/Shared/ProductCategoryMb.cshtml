@@ -1,0 +1,12 @@
+﻿@model List<Model1.EF.ProductCategory>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <li class="mobile-category__item">
+        <a href="/san-pham/@item.MetaTitle-@item.ID" class="mobile-category__link" style="text-decoration: none;">@item.Name</a>
+    </li>
+    
+}
+

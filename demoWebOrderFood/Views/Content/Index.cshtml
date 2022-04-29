@@ -1,0 +1,169 @@
+﻿@model PagedList.IPagedList<Model1.EF.Content>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Trade.cshtml";
+}
+
+<style>
+    .titleMap {
+        color: #000;
+        font-weight: 500;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+    .slideshow__slide-caption-title {
+        color: #82b5a5 !important;
+        text-shadow: 2px 2px #000;
+    }
+</style>
+
+
+
+<div class="container__news-header">
+    <div class="container__news-content">
+        <section class="slideshow" id="js-header">
+            <div class="slideshow__slide js-slider-home-slide is-current" data-slide="1">
+                <div class="slideshow__slide-background-parallax background-absolute js-parallax" data-speed="-1" data-position="top" data-target="#js-header">
+                    <div class="slideshow__slide-background-load-wrap background-absolute">
+                        <div class="slideshow__slide-background-load background-absolute">
+                            <div class="slideshow__slide-background-wrap background-absolute">
+                                <div class="slideshow__slide-background background-absolute">
+                                    <div class="slideshow__slide-image-wrap background-absolute">
+                                        <div class="slideshow__slide-image background-absolute" style="background-image: url('../../Assets/client/images/man-and-the-children.jpg')"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-nav vh-for-mobile" data-view="cover">
+                    <ul>
+                        <li class="label" data-view="cover">News</li>
+                    </ul>
+                </div>
+                <div class="slideshow__slide-caption">
+                    <div class="slideshow__slide-caption-text">
+                        <div class="container js-parallax" data-speed="2" data-position="top" data-target="#js-header">
+                            <h1 class="slideshow__slide-caption-title">Plant many green trees</h1>
+                            <p class="slideshow__slide-caption-content">Trees help to lessen the wind that might affect crops, cool off ground temperatures, and trap moisture and nutrients in the soil so that food crops grow better in the improved microclimate.  Trees also provide fodder for animals, create living fences, and can be a source of sustainable fuelwood production.</p><a class="slideshow__slide-caption-subtitle -load o-hsub -link" href="#"><span class="slideshow__slide-caption-subtitle-label">See how</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slideshow__slide js-slider-home-slide is-next" data-slide="2">
+                <div class="slideshow__slide-background-parallax background-absolute js-parallax" data-speed="-1" data-position="top" data-target="#js-header">
+                    <div class="slideshow__slide-background-load-wrap background-absolute">
+                        <div class="slideshow__slide-background-load background-absolute">
+                            <div class="slideshow__slide-background-wrap background-absolute">
+                                <div class="slideshow__slide-background background-absolute">
+                                    <div class="slideshow__slide-image-wrap background-absolute">
+                                        <div class="slideshow__slide-image background-absolute" style="background-image: url('../../Assets/client/images/pro2.png')"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-nav vh-for-mobile" data-view="cover">
+                    <ul>
+                        <li class="label" data-view="cover">News</li>
+                    </ul>
+                </div>
+                <div class="slideshow__slide-caption">
+                    <div class="slideshow__slide-caption-text">
+                        <div class="container js-parallax" data-speed="2" data-position="top" data-target="#js-header">
+                            <h1 class="slideshow__slide-caption-title">promote environmental protection</h1>
+                            <p class="slideshow__slide-caption-content">Numerous resources are available to promote environmental awareness and education: group learning (inside or outside of the classroom), informational and inspirational seminars, online courses, books, articles, videos, and brochures are just a few of the tools that can get you involved in promoting the environment.</p><a class="slideshow__slide-caption-subtitle -load o-hsub -link" href="#"><span class="slideshow__slide-caption-subtitle-label">Learn more about</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slideshow__slide js-slider-home-slide is-prev" data-slide="3">
+                <div class="slideshow__slide-background-parallax background-absolute js-parallax" data-speed="-1" data-position="top" data-target="#js-header">
+                    <div class="slideshow__slide-background-load-wrap background-absolute">
+                        <div class="slideshow__slide-background-load background-absolute">
+                            <div class="slideshow__slide-background-wrap background-absolute">
+                                <div class="slideshow__slide-background background-absolute">
+                                    <div class="slideshow__slide-image-wrap background-absolute">
+                                        <div class="slideshow__slide-image background-absolute" style="background-image: url('../../Assets/client/images/beach-cleaning-cleansing.jpg'); "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-nav vh-for-mobile" data-view="cover">
+                    <ul>
+                        <li class="label" data-view="cover">News</li>
+                    </ul>
+                </div>
+                <div class="slideshow__slide-caption">
+                    <div class="slideshow__slide-caption-text">
+                        <div class="container js-parallax" data-speed="2" data-position="top" data-target="#js-header">
+                            <h1 class="slideshow__slide-caption-title">clean up trash in contaminated places</h1>
+                            <p class="slideshow__slide-caption-content">Beach cleanups raise public awareness to the threat of debris more effectively than in less participatory public education programs, multiple studies show. Volunteers say the cleanups make them more mindful of how they dispose of their own disposables.    </p><a class="slideshow__slide-caption-subtitle -load o-hsub -link" href="#"><span class="slideshow__slide-caption-subtitle-label">View More</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="arrow-prev" viewbox="0 0 492 492" xmlns="http://www.w3.org/2000/svg">
+                <path d="M198.608 246.104L382.664 62.04c5.068-5.056 7.856-11.816 7.856-19.024 0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12C361.476 2.792 354.712 0 347.504 0s-13.964 2.792-19.028 7.864L109.328 227.008c-5.084 5.08-7.868 11.868-7.848 19.084-.02 7.248 2.76 14.028 7.848 19.112l218.944 218.932c5.064 5.072 11.82 7.864 19.032 7.864 7.208 0 13.964-2.792 19.032-7.864l16.124-16.12c10.492-10.492 10.492-27.572 0-38.06L198.608 246.104z"></path>
+            </symbol>
+            <symbol id="arrow-next" viewbox="0 0 492.004 492.004" xmlns="http://www.w3.org/2000/svg">
+                <path d="M382.678 226.804L163.73 7.86C158.666 2.792 151.906 0 144.698 0s-13.968 2.792-19.032 7.86l-16.124 16.12c-10.492 10.504-10.492 27.576 0 38.064L293.398 245.9l-184.06 184.06c-5.064 5.068-7.86 11.824-7.86 19.028 0 7.212 2.796 13.968 7.86 19.04l16.124 16.116c5.068 5.068 11.824 7.86 19.032 7.86s13.968-2.792 19.032-7.86L382.678 265c5.076-5.084 7.864-11.872 7.848-19.088.016-7.244-2.772-14.028-7.848-19.108z"></path>
+            </symbol>
+        </svg>
+    </div>
+</div>
+
+
+
+
+<div class="container__news-title">
+    <h5 class="wow fadeInUp" data-wow-delay="0.5s">What's up today</h5>
+    <h1 class="wow fadeInLeft title__line" data-wow-delay="0.5s">News</h1>
+
+</div>
+<div class="container__news">
+    <div class="container__news-wrapper">
+
+        @foreach (var item in Model)
+        {
+            if (item.Status == true)
+            {
+                <div class="box" style="background-image: url('@item.Image'); background-repeat: no-repeat;  background-size: cover; ">
+                    <div class="content">
+
+                        <h3 @*href="news-search"*@>@item.Name</h3>
+                        <p>
+                            @item.Description <br />
+                        </p>
+                        <p>
+                            @item.CreatedBy<br />
+                        </p>
+                        <p>
+                            @*@item.CreatedDate<br />*@
+                        </p>
+                        <a href="/tin-tuc/@item.MetaTitle-@item.ID">Read more</a>
+
+                    </div>
+                    <div class="box__overlay"></div>
+                </div>
+            }
+
+        }
+
+    </div>
+
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+
+@{ Html.RenderAction("IndexMaps", "Content");}
+

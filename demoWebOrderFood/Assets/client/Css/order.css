@@ -1,0 +1,35 @@
+.breadcrumb-item {
+  font-family: Merriweather, serif;
+  font-size: 20px;
+  color: var(--color-primary);
+  font-style: italic;
+  font-weight: bold;
+}
+.countdown__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+.message {
+  font-size: 4rem;
+  display: none;
+  padding: 1rem;
+}
+#headline {
+  font-family: Merriweather, serif;
+  font-size: 16px;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+.btn__receive {
+  padding: 8px;
+  background-color: var(--color-primary);
+  width: 75px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn__receive:hover {
+  background-color: #9ed6c4;
+}

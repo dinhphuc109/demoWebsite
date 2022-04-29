@@ -1,0 +1,36 @@
+﻿@model List<Model1.EF.Content>
+<div class="container-title">
+    <div class="grid wide">
+        <div class="container__benefit-title">
+            <h5>What Happens Here</h5>
+            <h1 class="title__line">Solve environmental problems</h1>
+        </div>
+        <div class="container__benefit container">
+            <div class="grid wide">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        
+                            <div class="col l-4 c-12 container__benefit-item">
+                                <a href="/tin-tuc/@item.MetaTitle-@item.ID" class="container__benefit-link">
+                                    <img src="@item.Image" alt="" class="container__benefit-img">
+                                </a>
+                                <h1>
+                                    
+                                        <span>@item.ViewCount</span>
+                                        @item.Name
+                                </h1>
+                                <p style="height: 200px">@item.Detail</p>
+                                <a href="/tin-tuc/@item.MetaTitle-@item.ID" class="container__benefit-readMore"><span>Read more</span></a>
+                            </div>
+                        
+
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

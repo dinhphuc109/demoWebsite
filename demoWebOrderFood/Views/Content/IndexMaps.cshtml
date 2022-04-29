@@ -1,0 +1,123 @@
+﻿z@model PagedList.IPagedList<Model1.EF.Content>
+@using PagedList.Mvc;
+
+
+<div class="container__map">
+    <div class="container__map-title">
+        <h5>What happens here</h5>
+        <h1 class="title__line">Maps</h1>
+
+    </div>
+    <div role="progressbar"
+         class="mdc-linear-progress map"
+         aria-label="Data Progress Bar"
+         style="visibility: hidden;">
+        <div class="mdc-linear-progress__buffer">
+            <div class="mdc-linear-progress__buffer-bar"></div>
+            <div class="mdc-linear-progress__buffer-dots"></div>
+        </div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+
+        </div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+
+        </div>
+    </div>
+    @*<script>
+            var progress, progressDiv;
+            progressDiv = document.querySelector(".mdc-linear-progress");
+            progress = new mdc.linearProgress.MDCLinearProgress(progressDiv);
+            progress.open();
+            progress.determinate = false;
+            progress.done = function () {
+                progress.close();
+                progressDiv.remove();
+            };
+        </script>*@
+
+    <div id="map"></div>
+    <div class="map__content">
+        <h1>statistical data</h1>
+        <h5>Check out the contaminated places above the map</h5>
+        <h2>Total: <span></span></h2>
+        <div class="map__data">
+            <div class="map__data-title">
+                <ul class="map__data-list map-list-title">
+                    <li class="map__data-item map__data-item-title">Location</li>
+                    <li class="map__data-item map__data-item-description">Description</li>
+                    <li class="map__data-item map__data-item-images">Images</li>
+                    
+                    
+                </ul>
+            </div>
+
+            
+                <div class="map__data-content">
+                    @foreach (var item2 in Model)
+                    {
+
+                        if (item2.ViewCount >= 400)
+                        {
+
+                            <ul class="map__data-list">
+                                <li class="map__data-item map__data-item-title">@item2.Name</li>
+                                <li class="map__data-item map__data-item-description">@item2.Description</li>
+                                <li class="map__data-item map__data-item-images"><img src="@item2.Image" width="100" height="100" /></li>
+                                
+                            </ul>
+                        }
+
+                    }
+                </div>
+                
+            
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNI_ZWPqvdS6r6gPVO50I4TlYkfkZdXh8&callback=initMap&libraries=&v=weekly"
+        async></script>
+<script type="text/javascript">
+        var markers = @Html.Raw(@ViewBag.Markers);
+        window.onload = function () {
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                zoom: 11,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            for (i = 0; i < markers.length; i++) {
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 8,
+                        fillColor: "#F00",
+                        fillOpacity: 1,
+                        strokeWeight: 0.4
+                    },
+                    map: map,
+                    title: data.title,
+
+                });
+
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent('<span class="titleMap">' + data.title + '</span>' + '<br><img src="' + data.description + '" style="background-size: contain">');
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+            }
+        }
+</script>

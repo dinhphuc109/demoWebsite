@@ -1,0 +1,246 @@
+﻿@model Model1.EF.User
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Trade.cshtml";
+}
+<style>
+    .main-body {
+        margin: 5rem 0;
+    }
+    .editUser {
+        position: absolute;
+        top: 291px;
+        left: 51%;
+    }
+        .editUser .hvt + .hvt {
+            padding-top: 33px;
+        }
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        display: none;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .btn__editUser, .btn__postUser {
+        padding: 4px 8px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+    a.btn__postUser{
+        color: #000;
+        text-decoration: none;
+    }
+    .modal__overFlow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: hidden;
+    }
+    .hvt input {
+        width: 600px;
+     
+    }
+    .btn__disable{
+        display: none;
+    }
+    .btn__formUpdate{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 26px;
+    }
+   
+    .button {
+        padding: 10px;
+        margin: 0 5px;
+        border-radius: 5px;
+    }
+    .btn__logOut{
+        display: none;
+    }
+    .btn__logOut a {
+        color: #fff;
+        font-size: 22px;
+        text-decoration: none;
+    }
+</style>
+<script>
+    $('#img__user').on('click', function (e) {
+        e.preventDefault();
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (url) {
+            $('#txtImage').val(url);
+        };
+        finder.popup();
+    })
+    var editor = CKEDITOR.replace('txtContent', {
+        customConfig: '/Assets/Admin/js/plugins/ckeditor/config.js',
+    });
+</script>
+<div class="main-body">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.UserName Profile</li>
+        </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <div class="row gutters-sm">
+        <div class="col-md-4 mb-3 content-img">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <a href="" id="img__user"> <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"></a>
+                        <div class="mt-3">
+                            <h4>@Model.Name</h4>
+                            <p class="text-secondary mb-1">@Html.FormatValue(Model.Email, "{0:dd/MM/yyyy}")</p>
+                            <p class="text-muted font-size-sm">@Model.Address</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-8 content-info">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            @Model.Name
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            @Model.Email
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Mobile</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            @Model.Phone
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Address</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            @Model.Address
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col sm-12">
+                            <button onclick="document.getElementById('id02').style.display='block'" class=" btn__primary btn__editUser">Edit profile</button>
+                        </div>
+                        <br />
+                        <!-- click edit -->
+                        @*<div class="col sm-12">
+                                <button class="btn btn__primary">Save</button>
+                                <button class="btn btn__primary">Cancel</button>
+                            </div>*@
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col sm-12">
+                            <a href="/UserProfile/HistoryOrder" onclick="document.getElementById('id01').style.display='block'" class=" btn__primary btn__postUser">Posted</a>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="modal"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="btn__primary btn__receive btn__logOut" style="width: 150px; height: 50px; ">@Html.ActionLink("Logout", "Logout", "User")</div>
+</div>
+
+@using (Html.BeginForm("Edit", "UserProfile", FormMethod.Post))
+{
+    <div id="id02" class="modal">
+        <form class="modal-content animate" action="Edit" method="post">
+            <div class="imgcontainer">
+                
+                @*<img class="circle1" src="@Model.Anh" alt="" />*@
+            </div>
+
+            @Html.HiddenFor(model => model.ID)
+        <div class="editUser">
+            <div class="hvt">
+                @Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="hvt">
+                @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "input__email" } })
+
+            </div>
+            <div class="hvt">
+                @Html.TextBoxFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+            <div class="hvt">
+                @Html.TextBoxFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+            
+            <div class="btn__formUpdate">
+                <button type="submit" class="btn__primary button btn__update">Update</button>
+                <input class="btn__primary button btn__cancel" type="button" onclick="window.location.replace('/user-profile')" value="Cancel" />
+            </div>
+            @*<div class="hvt">
+            <label for="uname"><h3 class="Name">Ảnh</h3></label>
+            <br />
+            <input type="text"
+                   value="@Model.Anh"
+                   name="Image"
+                   id="xFilePath"
+                   class="imageCV"
+                   style="width:44% !important"
+                   required />
+            <a id="SelectImage" onclick="BrowseServer()" style="position: relative;top: 25px" href="#">Chọn ảnh</a>
+        </div>*@
+
+
+        </div>
+        
+        </form>
+    </div>
+    <script>
+        $(function () {
+            $('.btn__editUser').click(function () {
+                $('.btn__editUser').addClass('btn__disable');        
+             
+                $('body,html').addClass('modal__overFlow');
+            })
+            $('.btn__cancel').click(function () {
+                $('.btn__editUser').removeClass('btn__disable');  
+             
+                $('body,html').removeClass('modal__overFlow');
+            })
+        })
+
+
+    </script>
+}
+

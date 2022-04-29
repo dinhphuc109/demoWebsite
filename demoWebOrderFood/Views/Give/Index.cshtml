@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Model1.ViewModel.CartViewModel>
+
+@{
+    ViewBag.Title = "Give";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="~/Assets/client/js/controller/SearchController.js"></script>
+}
+
+@{
+    var session = (UserLogin)Session[demoWebOrderFood.Common.CommonConstants.USER_SESSION];
+}
+<div class="main-body">
+    <div class="row gutters-sm">
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                if (session.UserName == item.CreatedBy)
+                {
+                    <div class="col-md-12 mt-3">
+
+                        <div class="card mt-3 mb-3">
+                            <div class="row" id="disable">
+                                <div class="col-sm-3">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-column align-items-center text-center">
+                                            <div class="mt-3">
+                                                <h4 style="font-size: 30px;">@Html.DisplayFor(modelItem => item.proid)</h4>
+                                                <p class="text-muted font-size-sm">@Html.DisplayFor(modelItem => item.CreatedDate) <br /> </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="card-body col-sm-9">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0" style="font-size: 16px">Full Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary" style="font-size: 16px">
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0" style="font-size: 16px">Created By</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary" style="font-size: 16px">
+                                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    @using (Html.BeginForm("Give", "Give", FormMethod.Post))
+                                    {
+                                        <div class="row">
+                                            <div class="col-sm-12 text-secondary" style="display: flex">
+                                                <div id="countdown" class="mr-auto" style="font-size: 16px" data-days="1" data-hrs="16" data-mins="0" data-secs="5"></div>
+                                                @*@using (Html.BeginForm("GiveAndReceive", "Cart", FormMethod.Post))
+                    {
+                        <button type="submit" class="btn btn__receive font-size-sm mr-2" onclick="alert('success for register the item');">Receive</button>
+                    }*@
+                                                <button type="button" class=" btn__receive " style="background-color: #fff; border: 1px solid #000" onclick="alert('Delete')">Delete</button>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label>Number ID</label>
+                                                            <input name="address" id="txtAddress" class="form-control" style="pointer-events: none; background-color: rgba(0, 0, 0, 0.2)" value="@Html.DisplayFor(modelItem => item.ID)" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input name="email" id="txtEmail" class="form-control" style="pointer-events: none; background-color: rgba(0, 0, 0, 0.2)" value="@Html.DisplayFor(modelItem => item.ShipEmail)" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Phone</label>
+                                                            <input name="mobile" id="txtPhone" style="pointer-events: none; background-color: rgba(0, 0, 0, 0.2)" class="form-control" value="@Html.DisplayFor(modelItem => item.Phone)" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label>Name</label>
+                                                            <input name="name" id="txtName" class="form-control" style="pointer-events: none; background-color: rgba(0, 0, 0, 0.2)" value="@Html.DisplayFor(modelItem => item.Name)" />
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Item</label>
+                                                            <input name="productname" id="txtproductName" class="form-control" style="pointer-events: none; background-color: rgba(0, 0, 0, 0.2)" value="@Html.DisplayFor(modelItem => item.ProName)" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Message</label>
+                                                            <textarea name="message" id="txtmessage" class="form-control"></textarea>
+                                                        </div>
+
+                                                        <button type="submit" id="btnSend" class="btn-cart"  onclick="alert('Success')" style="display: block; background-color: var(--color-primary); padding: 10px; width: 100px; border-radius: 5px; margin-top: 5px;">Send</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+    <div class="noProduct" style="position: relative; top: 50%; left: 37%">
+        <img src="~/Assets/client/images/no-cart-edit.png" style="width: 320px; height: 200px " />
+        <h1 style=" font-size: 22px; color: #fff; text-align: center; margin: 20px 0;">No products</h1>
+    </div>
+        }
+
+    </div>
+</div>
+
+<script>
+    function load() {
+        location.reload();
+    }
+</script>
+
+
+
+
+
+
+

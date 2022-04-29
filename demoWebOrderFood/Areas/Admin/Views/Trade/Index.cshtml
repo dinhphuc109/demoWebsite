@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Model1.ViewModel.CartViewModel>
+@{
+    ViewBag.Title = "Management for Give&receive";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Give&receive List
+}
+
+@section jsFooter{
+
+    <script src="~/Assets/Admin/js/controller/productController.js"></script>
+}
+
+
+
+<div class="row">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                
+
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Item</th>
+                                <th>Created Date</th>
+                                <th>Full name</th>
+                                <th>Created By</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr id="row_@item.ID">
+                                <td>@item.ID</td>
+                                <td>@item.ProName</td>
+                                <td>@item.CreatedDate</td>
+                                <td>@item.Name</td>
+                                <td>@item.CreatedBy</td>
+                                <td>@item.ShipEmail</td>
+                                <td>@item.Status</td>
+
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+<!-- Modal -->
+<div id="imagesManange" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">Quản lý ảnh</h4>
+            </div>
+            <div class="modal-body">
+                <div id="imagesList" style="margin:5px;">
+
+                </div>
+                <input type="button" id="btnChooImages" class="btn btn-primary" value="chọn ảnh" />
+                <input type="hidden" id="hidProductID" value="0" />
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnSaveImages">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

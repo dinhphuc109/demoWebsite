@@ -1,0 +1,68 @@
+﻿@model Model1.EF.Content
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/newsDetail.cshtml";
+}
+
+<style>
+    .container__newsDetail-wrapper {
+       
+        padding: 40px 20px;
+        background-color: #e7e6e6;
+        border-radius: 15px;
+    }
+    ._30o4 span{
+        color: #fff;
+    }
+</style>
+
+
+    <div class="container__newsDetail-header">
+        <ul class="news__tag-list">
+        @{
+            var tags = (List<Model1.EF.Tag>)ViewBag.Tags;
+            foreach (var tag in tags)
+            {
+                <li class="news__tag-item"><a href="/tag/@tag.ID">#@tag.Name</a></li>
+            }
+        }
+        </ul>
+        <h1 style="color: #fff">@Model.Name</h1>
+        <h5 style="color: #fff"><img class="container__newsDetail-header-img" style="width: 35px;height: 35px;border-radius: 50%;" src="~/Assets/client/images/avatar_news.png"> @Model.CreatedBy on @Html.FormatValue(Model.CreatedDate, "{0:dd/MM/yyyy hh:mm}")</h5>
+    </div>
+        <div class="container__newsDetail-wrapper">
+            <div class="container__newsDetail-img" style="background-image: url(@Model.Image);  "></div>
+            <div class="container__newsDetail-content">
+                <p>
+                    @Html.Raw(Model.Detail)
+                </p>
+            </div>
+             
+        </div>
+       <div class="container">
+           <div class="grid wide">
+               <div class="row sm-gutter">
+                   <div class="col l-12">
+                       <div class="product-review">
+                           <hr />
+                           <div class="tab-pane" id="product-binhluan">
+                               <div class="fb-like" data-width="800" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                               <div class="fb-comments" data-width="800" data-href="@Request.Url.AbsoluteUri" data-numposts="5"></div>
+                           </div>
+                           <hr />
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+        <script type="text/javascript">
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+        </script>

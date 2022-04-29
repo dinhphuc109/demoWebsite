@@ -1,0 +1,705 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+   .container__wrapper {
+        background-image: url('/Assets/client/images/stars.png');
+        background-color: #000;
+    }
+</style>
+ 
+        <div class="container__wrapper" >
+            <div class="row sm-gutter">
+                <div class="col l-2 mobile-hide">
+                    <div class="header__navbar ">
+                        <div class="header__navbar-list--title">Website</div>
+                        <ul class="header__navbar-list">
+                            <li class="header__navbar-item" onclick="change('website',this)">
+                                <i class="header__navbar-icon fas fa-bookmark"></i>
+                                <p class="header__navbar-text">Web summary</p>
+                            </li>
+                        </ul>
+                        <div class="header__navbar-list--title">Author</div>
+                        <ul class="header__navbar-list">
+                            <li class="header__navbar-item header__navbar-active" onclick="change('theFirst',this)">
+                                <i class="header__navbar-icon fas fa-user"></i>
+                                <p class="header__navbar-text">The first person</p>
+                            </li>
+                            <li class="header__navbar-item" onclick="change('theSecond',this)">
+                                <i class="header__navbar-icon fas fa-user"></i>
+                                <p class="header__navbar-text">The second person</p>
+                            </li>
+                            <li class="header__navbar-item" onclick="change('theThird',this)">
+                                <i class="header__navbar-icon fas fa-user"></i>
+                                <p class="header__navbar-text">The third person</p>
+                            </li>
+                            <li class="header__navbar-item" onclick="change('theFourth',this)">
+                                <i class="header__navbar-icon fas fa-user"></i>
+                                <p class="header__navbar-text">The fourth person</p>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col l-10">
+                    <!-- Version & Description -->
+                    <div class="container-information" id="website">
+                        <div class="row container-content">
+                            <div class="col container__wrap">
+                                <div class="container__content-infomation">
+                                    <div class="content__infomation-title">
+                                        <p>Version</p>
+                                    </div>
+                                    <div class="content__information-body">
+                                        <p>Version 1.0</p>
+                                    </div>
+                                    <div class="content__information-skill">
+                                        <div class="content__infomation-title">
+                                            <p>Description</p>
+                                        </div>
+                                        <div class="content__information-body">
+                                            <p>
+                                                During the outbreak of Covid-19 translation, we created a website to give and receive second hand: Whoever has leftovers, who has difficulty picking up and sharing it together. All are free. <br>
+                                                We have created a useful website for the community with second hand giving and receiving feature. According to the criterion "who gives up, who can hardly take it", the website creates an open space for those who have the need to share old, used or unnecessary things in life with the people. there are still many difficulties. Those who want to save money or simply want to recycle old items can pick up.<br>
+                                                At the same time, we also urge everyone to join hands in protecting the environment so that we can live in a green, clean, beautiful environment, "with the maxim: we kill the environment, it means we ourselves. killing us "
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content__information-skill">
+                                        <div class="content__infomation-title">
+                                            <p>Logo</p>
+                                        </div>
+                                        <div class="content__information--logo">
+                                            <img class="logo-imgOne" src="~/Assets/client/images/logo-home.png" alt="">
+                                            <img class="logo-imgTwo" src="~/Assets/client/images/logo.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- the first -->
+                    <div class="container-information mobile-hide" id="theFirst">
+                        <div class="row container-content">
+                            <div class="col container__wrap">
+                                <div class="container__content-infomation">
+                                    <div class="content__infomation-title">
+                                        <i class="content__infomation-icon fas fa-user"></i>
+                                        <p>Information</p>
+                                    </div>
+                                    <div class="content__information-body">
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-logo">
+                                                <img class="content__infomation-img" src="~/Assets/client/images/avatar_tam.png" alt="">
+                                            </div>
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Full name</div>
+                                                    <div class="content-info-item content__info-title">Date</div>
+                                                    <div class="content-info-item content__info-title">Interests</div>
+                                                    <div class="content-info-item content__info-title">Gender</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Hồ Thanh Tâm
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">09/01/1999</div>
+                                                    <div class="content-info-item content__info-text">
+                                                        Play games, code
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Male</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Job</div>
+                                                    <div class="content-info-item content__info-title">School</div>
+                                                    <div class="content-info-item content__info-title">Number phone</div>
+                                                    <div class="content-info-item content__info-title">Relationship</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Student
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Duy Tan University</div>
+                                                    <div class="content-info-item content__info-text">035 2409 114</div>
+                                                    <div class="content-info-item content__info-text">Alone</div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Nation</div>
+                                                    <div class="content-info-item content__info-title">Religion</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Kinh
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Buddhism</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content__information-skill">
+                                        <div class="content__information-title">
+                                            <i class="content__information-icon fas fa-graduation-cap"></i>
+                                            <p class="content__information-text">Skill</p>
+                                        </div>
+                                        <div class="content__information-body">
+                                            <div class="content__information-wrap">
+                                                <div class="content__information-wrapper">
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Front-End
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">50%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Back-End
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">0%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__be-loaded"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Mobile-App
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">20%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__mobile-loaded"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content__information-wrap">
+                                                <div class="content__information-wrapper">
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Coder</p>
+                                                            <p class="skill__mine-text skill__loading-text">80%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__games-loaded"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Speaking</p>
+                                                            <p class="skill__mine-text skill__loading-text">40%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__speak-loaded"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Communication</p>
+                                                            <p class="skill__mine-text skill__loading-text">30%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__conmmunication-loaded"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content__information-logo">
+                                                <img class="content__information-img" src="~/Assets/client/images/logo.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- the second -->
+                    <div class="container-information mobile-hide" id="theSecond">
+                        <div class="row container-content">
+                            <div class="col container__wrap">
+                                <div class="container__content-infomation">
+                                    <div class="content__infomation-title">
+                                        <i class="content__infomation-icon fas fa-user"></i>
+                                        <p>Information</p>
+                                    </div>
+                                    <div class="content__information-body">
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-logo">
+                                                <img class="content__infomation-img" src="./images/meo.jpg" alt="">
+                                            </div>
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Full name</div>
+                                                    <div class="content-info-item content__info-title">Date</div>
+                                                    <div class="content-info-item content__info-title">Interests</div>
+                                                    <div class="content-info-item content__info-title">Gender</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Đinh Ngọc Phúc
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">17/03/1999</div>
+                                                    <div class="content-info-item content__info-text">
+                                                        Play games, code
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Male</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Job</div>
+                                                    <div class="content-info-item content__info-title">School</div>
+                                                    <div class="content-info-item content__info-title">Number phone</div>
+                                                    <div class="content-info-item content__info-title">Relationship</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Student
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Duy Tan University</div>
+                                                    <div class="content-info-item content__info-text">0328894650</div>
+                                                    <div class="content-info-item content__info-text">Alone</div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Nation</div>
+                                                    <div class="content-info-item content__info-title">Religion</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Kinh
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Buddhism</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content__information-skill">
+                                        <div class="content__information-title">
+                                            <i class="content__information-icon fas fa-graduation-cap"></i>
+                                            <p class="content__information-text">Skill</p>
+                                        </div>
+                                        <div class="content__information-body">
+                                            <div class="content__information-wrap">
+                                                <div class="content__information-wrapper">
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Front-End
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text ">40%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill-second-one"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Back-End
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">70%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__be-loaded skill-second-two"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Mobile-App
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">20%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__mobile-loaded skill-second-three"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content__information-wrap">
+                                                <div class="content__information-wrapper">
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Code</p>
+                                                            <p class="skill__mine-text skill__loading-text">80%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__games-loaded skill-second-four"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Speaking</p>
+                                                            <p class="skill__mine-text skill__loading-text">40%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__speak-loaded skill-second-five"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Communication</p>
+                                                            <p class="skill__mine-text skill__loading-text">40%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__conmmunication-loaded skill-second-six"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content__information-logo">
+                                                <img class="content__information-img" src="~/Assets/client/images/logo.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- the third -->
+                    <div class="container-information mobile-hide" id="theThird">
+                        <div class="row container-content">
+                            <div class="col container__wrap">
+                                <div class="container__content-infomation">
+                                    <div class="content__infomation-title">
+                                        <i class="content__infomation-icon fas fa-user"></i>
+                                        <p>Information</p>
+                                    </div>
+                                    <div class="content__information-body">
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-logo">
+                                                <img class="content__infomation-img" src="~/Assets/client/images/avatar_cong.png" alt="">
+                                            </div>
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Full name</div>
+                                                    <div class="content-info-item content__info-title">Date</div>
+                                                    <div class="content-info-item content__info-title">Interests</div>
+                                                    <div class="content-info-item content__info-title">Gender</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Nguyễn Thành Công
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">06/08/1999</div>
+                                                    <div class="content-info-item content__info-text">
+                                                        Code, chatterbox
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Male</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Job</div>
+                                                    <div class="content-info-item content__info-title">School</div>
+                                                    <div class="content-info-item content__info-title">Number phone</div>
+                                                    <div class="content-info-item content__info-title">Relationship</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Student
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Duy Tan University</div>
+                                                    <div class="content-info-item content__info-text">0852044862</div>
+                                                    <div class="content-info-item content__info-text">Alone</div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Nation</div>
+                                                    <div class="content-info-item content__info-title">Religion</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Kinh
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Buddhism</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content__information-skill">
+                                        <div class="content__information-title">
+                                            <i class="content__information-icon fas fa-graduation-cap"></i>
+                                            <p class="content__information-text">Skill</p>
+                                        </div>
+                                        <div class="content__information-body">
+                                            <div class="content__information-wrap">
+                                                <div class="content__information-wrapper">
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Front-End
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">50%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill-third-one"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Back-End
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">20%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__be-loaded skill-third-two"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Mobile-App
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">10%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__mobile-loaded skill-third-three"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content__information-wrap">
+                                                <div class="content__information-wrapper">
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">chatterbox</p>
+                                                            <p class="skill__mine-text skill__loading-text">80%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__games-loaded skill-third-four"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Speaking</p>
+                                                            <p class="skill__mine-text skill__loading-text">70%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__speak-loaded skill-third-five"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Communication</p>
+                                                            <p class="skill__mine-text skill__loading-text">100%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__conmmunication-loaded skill-third-six"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content__information-logo">
+                                                <img class="content__information-img" src="~/Assets/client/images/logo.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- the fourth -->
+                    <div class="container-information mobile-hide" id="theFourth">
+                        <div class="row container-content">
+                            <div class="col container__wrap">
+                                <div class="container__content-infomation">
+                                    <div class="content__infomation-title">
+                                        <i class="content__infomation-icon fas fa-user"></i>
+                                        <p>Information</p>
+                                    </div>
+                                    <div class="content__information-body">
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-logo">
+                                                <img class="content__infomation-img" src="~/Assets/client/images/avatar_phat.png" alt="">
+                                            </div>
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Full name</div>
+                                                    <div class="content-info-item content__info-title">Date</div>
+                                                    <div class="content-info-item content__info-title">Interests</div>
+                                                    <div class="content-info-item content__info-title">Gender</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Phạm Văn Phát
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">02/04/1999</div>
+                                                    <div class="content-info-item content__info-text">
+                                                        Play games, code
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Male</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Job</div>
+                                                    <div class="content-info-item content__info-title">School</div>
+                                                    <div class="content-info-item content__info-title">Number phone</div>
+                                                    <div class="content-info-item content__info-title">Relationship</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Student
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Duy Tan University</div>
+                                                    <div class="content-info-item content__info-text">0782329421</div>
+                                                    <div class="content-info-item content__info-text">Alone</div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__change content__infomation-wrapper">
+                                            <div class="content__infomation-vitae">
+                                                <div class="content__infomation-question">
+                                                    <div class="content-info-item content__info-title">Nation</div>
+                                                    <div class="content-info-item content__info-title">Religion</div>
+                                                </div>
+                                                <div class="content__infomation-answer">
+                                                    <div class="content-info-item content__info-text content__infomation-active">
+                                                        Kinh
+                                                    </div>
+                                                    <div class="content-info-item content__info-text">Buddhism</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content__information-skill">
+                                        <div class="content__information-title">
+                                            <i class="content__information-icon fas fa-graduation-cap"></i>
+                                            <p class="content__information-text">Skill</p>
+                                        </div>
+                                        <div class="content__information-body">
+                                            <div class="content__information-wrap">
+                                                <div class="content__information-wrapper">
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Front-End
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">40%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill-fo-one"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Back-End
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">30%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__be-loaded skill-fo-two"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">
+                                                                Mobile-App
+                                                                Developement
+                                                            </p>
+                                                            <p class="skill__mine-text skill__loading-text">10%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__mobile-loaded skill-fo-three"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content__information-wrap">
+                                                <div class="content__information-wrapper">
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Play games</p>
+                                                            <p class="skill__mine-text skill__loading-text">90%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__games-loaded skill-fo-four"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Speaking</p>
+                                                            <p class="skill__mine-text skill__loading-text">40%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__speak-loaded skill-fo-five"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="content__information-skill">
+                                                        <div class="skill__mine">
+                                                            <p class="skill__mine-text skill__mine-content">Communication</p>
+                                                            <p class="skill__mine-text skill__loading-text">40%</p>
+                                                        </div>
+                                                        <span class="skill__loading">
+                                                            <span class="skill__loading skill__loading-loaded skill__conmmunication-loaded skill-fo-six"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content__information-logo">
+                                                <img class="content__information-img" src="~/Assets/client/images/logo.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
